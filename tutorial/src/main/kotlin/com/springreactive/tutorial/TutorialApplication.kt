@@ -7,5 +7,10 @@ import org.springframework.boot.runApplication
 class TutorialApplication
 
 fun main(args: Array<String>) {
-	runApplication<TutorialApplication>(*args)
+    val context = runApplication<TutorialApplication>(*args)
+    val greetingClient: GreetingClient = context.getBean(GreetingClient::class.java)
+    println(
+        ">> message = " +
+            greetingClient.getMessage().block()
+    )
 }
